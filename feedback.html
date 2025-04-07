@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canteen Feedback Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            width: 90%;
+            max-width: 400px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+            text-align: center;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            text-align: left;
+        }
+        textarea, select, input {
+            width: 100%;
+            margin: 10px 0;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .stars {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: center;
+        }
+        .stars input {
+            display: none;
+        }
+        .stars label {
+            font-size: 30px;
+            color: gray;
+            cursor: pointer;
+        }
+        .stars input:checked ~ label,
+        .stars label:hover,
+        .stars label:hover ~ label {
+            color: gold;
+        }
+        button {
+            background-color: green;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: darkgreen;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Canteen Feedback Form</h2>
+        <form id="feedbackForm">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label>Rate Your Experience:</label>
+            <div class="stars">
+                <input type="radio" id="star5" name="rating" value="5"><label for="star5">&#9733;</label>
+                <input type="radio" id="star4" name="rating" value="4"><label for="star4">&#9733;</label>
+                <input type="radio" id="star3" name="rating" value="3"><label for="star3">&#9733;</label>
+                <input type="radio" id="star2" name="rating" value="2"><label for="star2">&#9733;</label>
+                <input type="radio" id="star1" name="rating" value="1"><label for="star1">&#9733;</label>
+            </div>
+
+            <label for="staff">Staff Performance:</label>
+            <select id="staff" name="staff">
+                <option value="5">Excellent</option>
+                <option value="4">Good</option>
+                <option value="3">Average</option>
+                <option value="2">Poor</option>
+                <option value="1">Very Bad</option>
+            </select>
+
+            <label for="cleanliness">Cleanliness:</label>
+            <select id="cleanliness" name="cleanliness">
+                <option value="5">Excellent</option>
+                <option value="4">Good</option>
+                <option value="3">Average</option>
+                <option value="2">Poor</option>
+                <option value="1">Very Bad</option>
+            </select>
+
+            <label for="restaurant">Restaurant Performance:</label>
+            <select id="restaurant" name="restaurant">
+                <option value="5">Excellent</option>
+                <option value="4">Good</option>
+                <option value="3">Average</option>
+                <option value="2">Poor</option>
+                <option value="1">Very Bad</option>
+            </select>
+
+            <label for="food">Food Taste:</label>
+            <select id="food" name="food">
+                <option value="5">Excellent</option>
+                <option value="4">Good</option>
+                <option value="3">Average</option>
+                <option value="2">Poor</option>
+                <option value="1">Very Bad</option>
+            </select>
+
+            <label for="comments">Additional Comments:</label>
+            <textarea id="comments" name="comments" rows="4"></textarea>
+
+            <button type="button" onclick="submitFeedback()">Submit Feedback</button>
+        </form>
+    </div>
+
+    <script>
+        function submitFeedback() {
+            const name = document.getElementById("name").value;
+            const rating = document.querySelector("input[name='rating']:checked")?.value || "No rating";
+            const staff = document.getElementById("staff").value;
+            const cleanliness = document.getElementById("cleanliness").value;
+            const restaurant = document.getElementById("restaurant").value;
+            const food = document.getElementById("food").value;
+            const comments = document.getElementById("comments").value;
+            
+            const feedback = {
+                name,
+                rating,
+                staff,
+                cleanliness,
+                restaurant,
+                food,
+                comments
+            };
+            
+            console.log("Feedback Submitted:", feedback);
+            alert("Thank you for your feedback!");
+        }
+    </script>
+</body>
+</html>
