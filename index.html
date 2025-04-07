@@ -72,7 +72,7 @@
         <h2>Canteen Feedback Form</h2>
         <form id="feedbackForm">
             <label for="name">Your Name:</label>
-            <input type="text" id="name" name="name" required>
+            <input type="text" id="name" name="name">
 
             <label>Rate Your Experience:</label>
             <div class="stars">
@@ -85,6 +85,7 @@
 
             <label for="staff">Staff Performance:</label>
             <select id="staff" name="staff">
+                <option value="">-- Select --</option>
                 <option value="5">Excellent</option>
                 <option value="4">Good</option>
                 <option value="3">Average</option>
@@ -94,6 +95,7 @@
 
             <label for="cleanliness">Cleanliness:</label>
             <select id="cleanliness" name="cleanliness">
+                <option value="">-- Select --</option>
                 <option value="5">Excellent</option>
                 <option value="4">Good</option>
                 <option value="3">Average</option>
@@ -103,6 +105,7 @@
 
             <label for="restaurant">Restaurant Performance:</label>
             <select id="restaurant" name="restaurant">
+                <option value="">-- Select --</option>
                 <option value="5">Excellent</option>
                 <option value="4">Good</option>
                 <option value="3">Average</option>
@@ -112,6 +115,7 @@
 
             <label for="food">Food Taste:</label>
             <select id="food" name="food">
+                <option value="">-- Select --</option>
                 <option value="5">Excellent</option>
                 <option value="4">Good</option>
                 <option value="3">Average</option>
@@ -128,14 +132,14 @@
 
     <script>
         function submitFeedback() {
-            const name = document.getElementById("name").value;
+            const name = document.getElementById("name").value.trim() || "Anonymous";
             const rating = document.querySelector("input[name='rating']:checked")?.value || "No rating";
-            const staff = document.getElementById("staff").value;
-            const cleanliness = document.getElementById("cleanliness").value;
-            const restaurant = document.getElementById("restaurant").value;
-            const food = document.getElementById("food").value;
-            const comments = document.getElementById("comments").value;
-            
+            const staff = document.getElementById("staff").value || "Not provided";
+            const cleanliness = document.getElementById("cleanliness").value || "Not provided";
+            const restaurant = document.getElementById("restaurant").value || "Not provided";
+            const food = document.getElementById("food").value || "Not provided";
+            const comments = document.getElementById("comments").value.trim() || "No comments";
+
             const feedback = {
                 name,
                 rating,
@@ -145,10 +149,14 @@
                 food,
                 comments
             };
-            
+
             console.log("Feedback Submitted:", feedback);
             alert("Thank you for your feedback!");
         }
     </script>
 </body>
 </html>
+
+            
+  
+            
